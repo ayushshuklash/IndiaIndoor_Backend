@@ -28,7 +28,7 @@ exports.findByCategory = (req, res) => {
 };
 
 exports.findByText = (req, res) => {
-  Product.findByText(req.params.Text, (err, data) => {
+  Product.findByText(req.params.text, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
