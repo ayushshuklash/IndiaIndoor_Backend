@@ -3,5 +3,5 @@ module.exports = Server => {
 
   Server.get("/products/:id", product.findByCategory);
 
-  Server.get("/productsbytext/:text", product.findByCategory);
+  Server.get("/productsbytext/:text", product.findByText);
 };
