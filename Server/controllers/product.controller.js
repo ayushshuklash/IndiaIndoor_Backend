@@ -26,3 +26,19 @@ exports.findByCategory = (req, res) => {
     } else res.send(data);
   });
 };
+
+exports.findByText = (req, res) => {
+  Product.findByText(req.params.Text, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Products with Text ${req.params.Text}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving Products with id " + req.params.Text
+        });
+      }
+    } else res.send(data);
+  });
+};
