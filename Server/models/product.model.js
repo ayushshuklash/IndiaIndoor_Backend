@@ -44,7 +44,7 @@ Product.findByCategory = (id, result) => {
   };
 
   Product.findByText = (text, result) => {
-    sql.query("SELECT B.ID,B.Name,B.Description,B.Category_ID,B.Company_ID,B.Show,B.Advertise,B.ImageNamelg,B.ImageNamesm,C.Name As CompanyName,C.Country_ID as Country_ID,CO.Name As CountryName,CA.Name As CategoryName FROM IndiaIndoor_DEV.Brands B LEFT JOIN IndiaIndoor_DEV.Companies C ON B.Company_ID = C.ID LEFT JOIN IndiaIndoor_DEV.Countries CO ON C.Country_ID = CO.ID RIGHT JOIN IndiaIndoor_DEV.Categories CA ON CA.ID = B.Category_ID  WHERE B.Name LIKE '%?%' OR CO.Name LIKE '%?%' OR CA.Name LIKE '%?%' OR C.NAME LIKE '%?%'",Text ,(err, res) => {
+    sql.query("SELECT B.ID,B.Name,B.Description,B.Category_ID,B.Company_ID,B.Show,B.Advertise,B.ImageNamelg,B.ImageNamesm,C.Name As CompanyName,C.Country_ID as Country_ID,CO.Name As CountryName,CA.Name As CategoryName FROM IndiaIndoor_DEV.Brands B LEFT JOIN IndiaIndoor_DEV.Companies C ON B.Company_ID = C.ID LEFT JOIN IndiaIndoor_DEV.Countries CO ON C.Country_ID = CO.ID RIGHT JOIN IndiaIndoor_DEV.Categories CA ON CA.ID = B.Category_ID  WHERE B.Name LIKE '%"+text+"%' OR CO.Name LIKE '%"+text+"%' OR CA.Name LIKE '%"+text+"%' OR C.NAME LIKE '%"+text+"%'",(err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
